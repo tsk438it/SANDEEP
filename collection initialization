@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplicationlist
+{
+    public class Parent
+    {
+
+        public string pid { get; set; }
+        public string pname { get; set; }
+        public string pcountry { get; set; }
+        public List<Child> childs { get; set; }
+    }
+    public class Child
+    {
+        public string cid { get; set; }
+        public string cname { get; set; }
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Parent p = new Parent()
+            {
+                pid = "1",
+                pname = "venkat",
+                pcountry = "india",
+                childs = new List<Child>() { new Child() { cid = "11",cname= "sandeep"} ,
+                                             new Child() { cid = "12", cname = "dileep"},
+                                             new Child() { cid = "13", cname = "madhan"}
+                                           }
+            };
+            Parent p1 = new Parent()
+            {
+                pid = "2",
+                pname = "nag",
+                pcountry = "india",
+                childs = new List<Child>()
+            };
+            List<Parent> parentlist = new List<Parent>();
+            parentlist.Add(p);
+            parentlist.Add(p1);
+
+            foreach (var pl in parentlist)
+            {
+                Console.WriteLine(pl.pname);
+                {
+                    if (pl.childs.Count>0)
+                    {
+                        foreach (var c in pl.childs)
+                        {
+                            Console.WriteLine(c.cid);
+                           
+                        }
+
+                    }
+
+                   
+                }
+                Console.Read();
+            }
+        }
+        
+    }
+
+}
