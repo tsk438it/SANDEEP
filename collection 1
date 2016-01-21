@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace collectioninitialization
+{
+    class Parent
+    {
+        public int pid;
+        public string pname;
+        public string pcoumtry;
+        public List<Child> childs;
+    }
+    class Child
+    {
+        public int cid;
+        public string cname;
+        public string ccountry;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Parent p = new Parent()
+            { pid = 1, pname = "venkat", pcoumtry = "india",
+             childs = new List<Child>() { new Child() { cid=11, cname = "sandeep" , ccountry ="india"},
+                                          new Child() { cid=12, cname = "dileep" , ccountry ="india"},
+                                          new Child() { cid=11, cname = "madhan" , ccountry ="india"},
+                                        }
+            };
+            List<Parent> parentlist = new List<Parent>()
+            {
+               new Parent() { pid = 2, pname = "umarani", pcoumtry = "india",
+             childs = new List<Child>() {new Child() { cid = 21, cname = "sandy", ccountry ="india"},
+                                         new Child() { cid = 22, cname = "dil", ccountry = "india" }
+                                        }
+                            },
+               new Parent() { pid =3, pname = "krishna", pcoumtry= "india",
+             childs = new List<Child>() { new Child() { cid= 31, cname="ram", ccountry ="india" },
+                                          new Child() { cid= 32, cname="venu", ccountry ="india" }
+                                        }
+                            }
+           };
+
+            foreach(var p1 in parentlist)
+            {
+                Console.WriteLine(p1.pname + " " + p1.pid);
+
+                if(p1.childs.Count>0)
+                {
+                    foreach(var c1 in p1.childs)
+                    {
+                        Console.WriteLine(c1.cname+ " " + c1.ccountry);
+                    }
+                }
+            }
+            Console.Read();
+      
+
+        }
+        
+    }
+}
